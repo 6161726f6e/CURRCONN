@@ -1,9 +1,8 @@
 #!/bin/bash
 
+touch netput.txt
 netstat -antu  | cut -d":" -f2 | sed "/^ *$/d" | awk '{print $2}'| grep '^[1-9]' > IPs.txt 
 while read ip; do
-	echo -e "***********************"
-	echo -e $ip
-	echo -e "\n***********************"
-	whois $ip
+	echo -e "\n\n***********************\n$ip\n***********************" >> netput.txt
+	whois $ip | grep 'OrgName\|City\|State\|Coun' >> netput.txt
 done < IPs.txt
