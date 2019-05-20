@@ -7,7 +7,6 @@ touch netstat3.tmp
 netstat -antup | awk '{print $5, $6, $7}' | grep '^[1-9]' > netstat.tmp
 
 while read myline; do
-	echo $myline | cut -d":" -f1 >> netstat2.tmp
 	IP=`echo $myline | cut -d":" -f1`
 	PROC=`echo $myline | awk '{print $3}'`
 	echo -e "\n\n***********************\n$IP\n$PROC" >> netput.txt
