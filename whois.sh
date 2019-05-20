@@ -6,7 +6,6 @@ touch netstat2.tmp
 touch netstat3.tmp
 netstat -antup | awk '{print $5, $6, $7}' > netstat.tmp
 cat netstat.tmp | grep '^[1-9]' > netstat2.tmp
-#cat netstat.tmp | cut -d":" -f2 | sed "/^ *$/d" | awk '{print $2}'| grep '^[1-9]' > IPs.txt 
 
 while read myline; do
 	echo $myline | cut -d":" -f1 >> netstat3.tmp
