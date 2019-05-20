@@ -9,10 +9,13 @@ cat netstat.tmp | grep '^[1-9]' > netstat2.tmp
 #cat netstat.tmp | cut -d":" -f2 | sed "/^ *$/d" | awk '{print $2}'| grep '^[1-9]' > IPs.txt 
 
 while read myline; do
-	echo $myline
 	echo $myline | cut -d":" -f1 >> netstat3.tmp
-	IP=`echo $myline | cut -d":" -f1 >> netstat3.tmp`
-	echo $myline | awk '{print $3}' >> netstat3.tmp
-	echo -e "\n\n***********************\n$IP\n***********************" >> netput.txt
-	#whois $IP | grep 'OrgName\|City\|State\|ountry\|role\' >> netput.txt
+	IP=`echo $myline | cut -d":" -f1`
+	PROC=`echo $myline | awk '{print $3}'`
+	echo -e "\n\n***********************\n$IP\n$PROC" >> netput.txt
+	whois $IP | grep 'OrgName\|City\|State\|ountry\|role' >> netput.txt
+	echo -e "***********************" >> netput.txt
 done < netstat2.tmp
+
+rm *.tmp
+
