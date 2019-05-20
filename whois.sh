@@ -2,8 +2,6 @@
 
 touch netput.txt
 touch netstat.tmp
-touch netstat2.tmp
-touch netstat3.tmp
 netstat -antup | awk '{print $5, $6, $7}' | grep '^[1-9]' > netstat.tmp
 
 while read myline; do
