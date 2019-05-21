@@ -1,6 +1,6 @@
 This bash script obtains a status of a machine's current network connections and extracts all TCP and UDP destinations in contact with the machine.
 
-It will then look up details on the owner of the remote IP and print useful information about it (e.g., Org, Location, associated PID, etc.).  
+It will then look up details on the owner of the remote IP and print useful information about it (e.g., Org, Location, associated PID, port, Reverse DNS, etc.).  
 
 The results are written to netput.txt.
 
