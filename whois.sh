@@ -10,7 +10,7 @@
  
 touch netput.txt
 touch netstat.tmp
-netstat -antup | awk '{print $5, $4, $6, $7}' | grep '^[1-9]' > netstat.tmp
+netstat -antup | awk '{print $5, $4, $6, $7}' | grep '^[1-9]' | grep -v '^127' > netstat.tmp
 #cat netstat.tmp
 
 while read myline; do
