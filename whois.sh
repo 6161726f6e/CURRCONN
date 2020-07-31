@@ -2,10 +2,12 @@
 #Author: Aaron Dhiman
 #
 #This script takes a snapshot of current network connections.
-#It then prints out useful inforation about all of the connections, 
-#such as who owns the remote computer, what application is using each
-#connection, what ports are being connected, domain names associated
-#with the remote peer, etc.  The results are output to netput.txt
+# It then prints out useful inforation about all of the connections, 
+# such as who owns the remote computer, what application is using each
+# connection, what ports are being connected, domain names associated
+# with the remote peer, etc.  The results are output to netput.txt
+#
+#Run as root to get system procs
 #####################################################################
 
 filename=netput-`date +%H:%M:%S`.txt
