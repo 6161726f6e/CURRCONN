@@ -7,9 +7,9 @@
 #connection, what ports are being connected, domain names associated
 #with the remote peer, etc.  The results are output to netput.txt
 #####################################################################
- 
-touch netput.txt
-touch netstat.tmp
+
+filename=netput-`date +%H:%M:%S`.txt
+echo $filename
 netstat -antup | awk '{print $5, $4, $6, $7}' | grep '^[1-9]' | grep -v '^127' > netstat.tmp
 #cat netstat.tmp
 
@@ -23,11 +23,11 @@ while read myline; do
 	STATE=`echo $myline | awk '{print $3}'`
 
 	echo "looking up $IP"
-	echo -e "\n\n**********************************************\nproc = $PROC:$LPORT\ndest = $IPP       $STATE\n $DOMAIN\n   \n" >> netput.txt
-	whois $IP | grep 'OrgName\|City\|State\|ountry\|role\|OrgTechName' >> netput.txt
-	echo -e "*********************************************" >> netput.txt
+	echo -e "\n\n**********************************************\nproc = $PROC:$LPORT\ndest = $IPP       $STATE\n $DOMAIN\n   \n" >> $filename
+	whois $IP | grep 'OrgName\|City\|State\|ountry\|role\|OrgTechName' >> $filename
+	echo -e "*********************************************" >> $filename
 done < netstat.tmp
 
-echo -e "------------------------\nRESULTS IN netput.txt\n------------------------\n"
+echo -e "------------------------\nRESULTS IN $filename\n------------------------\n"
 rm *.tmp
 
