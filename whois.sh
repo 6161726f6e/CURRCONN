@@ -24,7 +24,7 @@ while read myline; do
 	PROC=`echo $myline | awk '{print $4}' | cut -d "/" -f2`
 	PID=`echo $myline | awk '{print $4}' | cut -d "/" -f1`
 	PS_ALL=`ps aux | grep $PID` 
-	PS_DETAIL=`echo "$PS_ALL"| grep $PID` 
+	PS_DETAIL=`echo "$PS_ALL"| grep $PID | grep -v 'grep'` 
 	STATE=`echo $myline | awk '{print $3}'`
 
 	echo "looking up $IP"
