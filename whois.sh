@@ -5,7 +5,7 @@
 #  It then prints out useful inforation about all of the connections, 
 #  such as who owns the remote computer, what application is using each
 #  connection, what ports are being connected, domain names associated
-#  with the remote peer, etc.  The results are output to netput.txt
+#  with the remote peer, etc.  The results are output to netput-<date>.txt
 #
 #  NOTE: Run as root to get system procs
 #  NOTE: Procs in TIME_WAIT will not have active PID info
