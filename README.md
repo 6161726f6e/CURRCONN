@@ -6,8 +6,8 @@ The results are written to netput.txt.
 
 Future enhancments will include Shodan lookups on the remote destinations, website domains associated with the IPs, and VirusTotal information about them.
 
-**Executing Script (run as root to get proc info for all connections)**
-***********************************************************************
+**Executing Script** (run as root to get proc info for all connections):
+************************************************************************
 ```
 ╰─⠠⠵ sudo ./whois.sh
 
