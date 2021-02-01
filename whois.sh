@@ -12,7 +12,7 @@
 #####################################################################
 
 help(){
-  echo "This bash script obtains a status of a machine's current network connections and extracts all TCP and UDP destinations in contact with the machine.\n
+  echo "This bash script obtains a status of a machine's current network connections and extracts all TCP and UDP destinations in contact with the machine.
 
 It will then look up details on the owner of the remote IP and print useful information about it (e.g., Org, Location, associated PID, process details, port, Reverse DNS, etc.).
 
@@ -20,7 +20,7 @@ The results are written to netput.txt."
   echo
   echo "Usage : ./${0##*/} [OPTION]"
   echo "  Options:"
-  echo "     -e       only display ESTABLISHED connections."
+  echo "     -e       only write ESTABLISHED connections to netput result file."
   echo "     -h       Help"
   echo
 }
@@ -41,7 +41,9 @@ getConns(){
 		PS_ALL=`ps aux | grep $PID` 
 		PS_DETAIL=`echo "$PS_ALL"| grep $PID | grep -v 'grep'` 
 		STATE=`echo $myline | awk '{print $3}'`
-		if [[ "$2" = "e" && "$STATE" = "ESTABLISHED" || "$#" -eq 0 ]]
+		echo $STATE
+		echo "$1"
+		if [[ "$STATE" = "ESTABLISHED" || "$1" != "1" ]]
 		  then
 		    echo "looking up $IP"
 		    echo -e "\n**********************************************\nproc:port = $PROC:$LPORT" >> $filename
@@ -69,7 +71,11 @@ case "$1" in
     help
     exit 1
   ;;
- 
+  
+  -e)
+    getConns 1
+  ;;
+  
   *)
     getConns
   ;;
