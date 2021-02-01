@@ -42,10 +42,10 @@ getConns(){
 		PS_DETAIL=`echo "$PS_ALL"| grep $PID | grep -v 'grep'` 
 		STATE=`echo $myline | awk '{print $3}'`
 		echo $STATE
-		echo "$1"
+		echo "looking up $IP"
+		#echo "$1"
 		if [[ "$STATE" = "ESTABLISHED" || "$1" != "1" ]]
 		  then
-		    echo "looking up $IP"
 		    echo -e "\n**********************************************\nproc:port = $PROC:$LPORT" >> $filename
 		    echo -e "PID = $PID" >> $filename
 		    #echo "DEBUG &&&&&&&&& $myline" >> $filename
