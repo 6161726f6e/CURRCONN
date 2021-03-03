@@ -26,7 +26,7 @@ The results are written to netput.txt."
 }
 
 getConns(){
-	filename=netput-`date +%H:%M:%S`.txt
+	filename=netput-`date +%m-%d-%y_%H:%M:%S`.txt
 	netstat -antup | awk '{print $5, $4, $6, $7}' | grep '^[1-9]' | grep -v '^127' > netstat.tmp
 	#cat netstat.tmp
 
